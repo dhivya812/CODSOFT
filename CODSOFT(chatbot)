@@ -1,0 +1,38 @@
+
+def codsoft_intern_chatbot():
+    print("Jimmy: Hello! I’m Jimmy, your assistant for CodSoft internship tasks.")
+    print("Jimmy: You can type 'quit' anytime to end the chat.\n")
+
+    while True:
+        message = input("You: ").strip().lower()
+
+        if message in ['hi', 'hello', 'hey']:
+            print("Jimmy: Hey! Good to see you. Working on your tasks?")
+        
+        elif 'who are you' in message or 'your role' in message:
+            print("Jimmy: I’m Jimmy — a chatbot made to help CodSoft interns practice Python!")
+        
+        elif 'what can you do' in message:
+            print("Jimmy: I can answer basic questions about your internship or Python.")
+        
+        elif 'python' in message:
+            print("Jimmy: Python is user-friendly and great for web, data, and AI projects.")
+        
+        elif 'codsoft' in message:
+            print("Jimmy: CodSoft gives hands-on internship experience to build real skills.")
+        
+        elif 'task' in message or 'project' in message:
+            print("Jimmy: Complete your tasks step by step. Ask if you get stuck!")
+        
+        elif 'thank you' in message or 'thanks' in message:
+            print("Jimmy: You're welcome! Keep up the great work.")
+        
+        elif message in ['bye', 'quit', 'exit']:
+            print("Jimmy: Bye! Good luck with your CodSoft internship.")
+            break
+        
+        else:
+            print("Jimmy: Hmm... I don't get that. Try asking something else.")
+
+
+codsoft_intern_chatbot()

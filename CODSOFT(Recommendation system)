@@ -1,0 +1,25 @@
+import pandas as pd
+from sklearn.metrics.pairwise import cosine_similarity
+
+# Sample user-item ratings
+data = {
+    'The Matrix': [5, 4, 1, 0],
+    'John Wick': [4, 5, 0, 0],
+    'Inception': [5, 5, 2, 1],
+    'Interstellar': [0, 0, 5, 5],
+    'The Godfather': [0, 0, 4, 5]
+}
+user_ratings = pd.DataFrame(data, index=['User1', 'User2', 'User3', 'User4'])
+
+# Step 1: Transpose to get item-item matrix
+item_similarity = cosine_similarity(user_ratings.T)
+item_similarity_df = pd.DataFrame(item_similarity, index=user_ratings.columns, columns=user_ratings.columns)
+
+# Step 2: Recommend movies similar to 'Inception'
+def recommend_movies(movie_name, similarity_df, top_n=3):
+    sim_scores = similarity_df[movie_name].sort_values(ascending=False)
+    sim_scores = sim_scores[1:top_n+1]  # Exclude the movie itself
+    return sim_scores
+
+print("Top movies similar to 'Inception':")
+print(recommend_movies('Inception', item_similarity_df))
